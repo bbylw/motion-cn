@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+<h1><img width="35" height="35" alt="Motion logo" src="https://github.com/user-attachments/assets/00d6d1c3-72c4-4c2f-a664-69da13182ffc" /><br />Motion 中文官网</h1>
 
-First, run the development server:
+<p>一个展示 Motion 动画库强大能力的中文官方网站</p>
+
+[![Deploy Status](https://github.com/bbylw/motion-cn/actions/workflows/deploy.yml/badge.svg)](https://github.com/bbylw/motion-cn/actions/workflows/deploy.yml)
+[![Custom Domain](https://img.shields.io/badge/domain-motion.ndjp.net-6366f1)](https://motion.ndjp.net)
+
+<a href="https://motion.ndjp.net">🌐 在线访问</a>
+
+</div>
+
+---
+
+## 技术栈
+
+| 技术 | 版本 | 用途 |
+|------|------|------|
+| Next.js | 16.2.10 | React 框架，静态导出 |
+| React | 19.2.7 | UI 渲染 |
+| Motion | 12.42.2 | 动画引擎 |
+| TypeScript | 6.0.3 | 类型安全 |
+| Tailwind CSS | 3.4 | 原子化样式 |
+
+## 本地开发
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 构建部署
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+输出目录：`out/`，已配置 GitHub Actions 自动部署到 Pages。
 
-To learn more about Next.js, take a look at the following resources:
+## 页面结构
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Hero** — 3D 滚动入场标题 + 浮动粒子光效
+- **数据展示** — 弹性数字卡片 + 无限滚动 logo 墙
+- **特性区域** — 交错入场的特性卡片网格
+- **交互演示** — 弹簧/拖拽/布局/联动/手势 五大实时演示
+- **代码示例** — Tab 切换的代码片段展示
+- **平台支持** — React / JavaScript / Vue 三端通用
+- **CTA** — 行动号召 + 数据统计
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 自定义域名
 
-## Deploy on Vercel
+motion.ndjp.net → GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 许可
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+本项目采用 MIT 许可证。Motion™ 是 Motion Division 的商标。
