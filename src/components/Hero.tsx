@@ -1,10 +1,16 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'motion/react'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 export default function Hero() {
   const ref = useRef(null)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -18,22 +24,22 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.2,
+        staggerChildren: 0.06,
+        delayChildren: 0.1,
       },
     },
   }
 
   const letterVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -90 },
+    hidden: { opacity: 0, y: 40, rotateX: -60 },
     visible: {
       opacity: 1,
       y: 0,
       rotateX: 0,
       transition: {
         type: 'spring' as const,
-        stiffness: 100,
-        damping: 12,
+        stiffness: 120,
+        damping: 14,
       },
     },
   }
@@ -45,7 +51,7 @@ export default function Hero() {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 grid-bg" />
-      
+
       {/* Animated orbs */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-motion-accent/5 blur-[100px]"
@@ -91,7 +97,7 @@ export default function Hero() {
       <motion.div style={{ y, opacity }} className="relative z-10 text-center px-6 max-w-5xl">
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={isMounted ? { opacity: 0, y: 20 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-motion-accent/10 border border-motion-accent/20 mb-8"
@@ -104,12 +110,12 @@ export default function Hero() {
           <span className="text-sm text-motion-glow">全新升级 · 120fps GPU 加速</span>
         </motion.div>
 
-        {/* Main Title */}
+        {/* Main Title - Line 1 */}
         <div className="overflow-hidden mb-2">
           <motion.h1
             className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
             variants={titleVariants}
-            initial="hidden"
+            initial={isMounted ? 'hidden' : false}
             animate="visible"
           >
             {title.split('').map((letter, i) => (
@@ -124,11 +130,13 @@ export default function Hero() {
             ))}
           </motion.h1>
         </div>
+
+        {/* Main Title - Line 2 */}
         <div className="overflow-hidden mb-8">
           <motion.h1
             className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight gradient-text"
             variants={titleVariants}
-            initial="hidden"
+            initial={isMounted ? 'hidden' : false}
             animate="visible"
           >
             {title2.split('').map((letter, i) => (
@@ -147,9 +155,9 @@ export default function Hero() {
         {/* Subtitle */}
         <motion.p
           className="text-lg md:text-xl text-motion-light/60 max-w-2xl mx-auto mb-12 leading-relaxed"
-          initial={{ opacity: 0, y: 30 }}
+          initial={isMounted ? { opacity: 0, y: 30 } : false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
           一个开源动画库，将 JavaScript 的强大能力与浏览器原生 API 结合，
           为 React、JavaScript 和 Vue 提供生产就绪的动画解决方案。
@@ -158,9 +166,9 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           className="flex flex-wrap items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 30 }}
+          initial={isMounted ? { opacity: 0, y: 30 } : false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
           <motion.a
             href="#showcase"
