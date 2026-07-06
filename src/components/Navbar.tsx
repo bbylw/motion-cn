@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'motion/react'
+import Image from 'next/image'
 import { useRef } from 'react'
 import MagneticButton from './MagneticButton'
 
@@ -33,15 +34,17 @@ export default function Navbar() {
           whileTap={{ scale: 0.98 }}
         >
           <motion.div
-            className="w-8 h-8 rounded-lg bg-gradient-to-br from-motion-accent to-motion-hot flex items-center justify-center"
+            className="w-8 h-8 rounded-lg overflow-hidden"
             animate={{ rotate: [0, 5, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" opacity="0.9"/>
-              <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6"/>
-              <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/>
-            </svg>
+            <Image
+              src="/motion-logo.png"
+              alt="Motion Logo"
+              width={32}
+              height={32}
+              className="w-full h-full object-contain"
+            />
           </motion.div>
           <span className="font-display text-lg font-bold text-motion-light">
             Motion
